@@ -942,6 +942,112 @@
 #     print("File 'output.txt' not found.")
 
 
+# # 73. Copy File
+# try:
+#     with open("output.txt", "r") as src, open("copy.txt", "w") as dest:
+#         dest.write(src.read())
+# except FileNotFoundError:
+#     print("Source file not found.")
+
+
+# # 74. Count Lines in a File
+# with open("output.txt", "r") as f:
+#     print(len(f.readlines()))
+
+# # 75. Count Words in a File
+# with open("output.txt", "r") as f:
+#     print(sum(len(line.split()) for line in f))
+
+
+# # 76. Find Longest Line in a File
+# with open("output.txt", "r") as f:
+#     print(max(f, key=len))
+
+
+
+# # 77. Search for a Word in a File
+# word = input("Enter word to search: ")
+# with open("output.txt", "r") as f:
+#     for i, line in enumerate(f, 1):
+#         if word in line:
+#             print(f"Found in line {i}")
+
+
+# # 78. Append to a File
+# text = input("Enter text to append: ")
+# with open("output.txt", "a") as f:
+#     f.write("\n" + text)
+
+
+
+# # 79. Remove Blank Lines
+# with open("output.txt", "r") as f, open("cleaned.txt", "w") as new_f:
+#     new_f.writelines(line for line in f if line.strip())
+
+
+# # 80. File Statistics
+# with open("output.txt", "r") as f:
+#     content = f.read()
+#     print("Characters:", len(content))
+#     print("Lines:", content.count("\n") + 1)
+#     print("Words:", len(content.split()))
+
+
+
+# # 81. Class Rectangle
+# class Rectangle:
+#     def __init__(self, length, width):
+#         self.length = length
+#         self.width = width
+
+#     def area(self):
+#         return self.length * self.width
+
+#     def perimeter(self):
+#         return 2 * (self.length + self.width)
+
+
+# # 82. Class Circle
+# class Circle:
+#     def __init__(self, radius):
+#         self.radius = radius
+
+#     def area(self):
+#         return 3.14159 * self.radius ** 2
+
+#     def circumference(self):
+#         return 2 * 3.14159 * self.radius
+    
+
+# # 83. Class BankAccount
+# class BankAccount:
+#     def __init__(self, balance=0):
+#         self.balance = balance
+
+#     def deposit(self, amount):
+#         self.balance += amount
+
+#     def withdraw(self, amount):
+#         if amount > self.balance:
+#             print("Insufficient funds.")
+#         else:
+#             self.balance -= amount
+
+#     def get_balance(self):
+#         return self.balance
+
+
+# # 84. Class Student
+# class Student:
+#     def __init__(self, name, student_id, grades):
+#         self.name = name
+#         self.student_id = student_id
+#         self.grades = grades
+
+#     def average_grade(self):
+#         return sum(self.grades) / len(self.grades)
+
+
 # '''
 # 85.	**Class** Car **and Inheritance**
 # •	Create a base class Car with attributes: make, model, year. 
@@ -1868,22 +1974,58 @@
 
 
 # # 120. Todo List - Task manager
-# class TodoList:
-#     def __init__(self):
-#         self.tasks = []  # List to store tasks
-    
-#     def add_task(self, task):
-#         # Add new task as not completed
-#         self.tasks.append({"task": task, "completed": False})
-        
-#     def complete_task(self, task_number):
-#         # Mark task as completed
-#         if 0 <= task_number < len(self.tasks):
-#             self.tasks[task_number]["completed"] = True
-            
-#     def view_tasks(self):
-#         # Show all tasks and their status
-#         for i, task in enumerate(self.tasks):
-#             status = "✓" if task["completed"] else " "
-#             print(f"{i+1}. [{status}] {task['task']}")
+# Simple To-Do List Manager
+# def view_tasks(tasks):
+#     if not tasks:
+#         print("No tasks available.")
+#     else:
+#         print("\nTo-Do List:")
+#         for idx, task in enumerate(tasks, start=1):
+#             status = "✔️ Done" if task["done"] else "❌ Not Done"
+#             print(f"{idx}. {task['task']} - {status}")
+#         print()
+
+# def add_task(tasks):
+#     task_name = input("Enter the task description: ")
+#     tasks.append({"task": task_name, "done": False})
+#     print(f"Task '{task_name}' added successfully!")
+
+# def mark_task_done(tasks):
+#     view_tasks(tasks)
+#     if not tasks:
+#         return
+#     try:
+#         task_number = int(input("Enter the task number to mark as done: "))
+#         if 1 <= task_number <= len(tasks):
+#             tasks[task_number - 1]["done"] = True
+#             print(f"Task '{tasks[task_number - 1]['task']}' marked as done!")
+#         else:
+#             print("Invalid task number.")
+#     except ValueError:
+#         print("Please enter a valid number.")
+
+# def main():
+#     tasks = []
+#     while True:
+#         print("\nTo-Do List Manager")
+#         print("1. View tasks")
+#         print("2. Add a task")
+#         print("3. Mark a task as done")
+#         print("4. Exit")
+#         choice = input("Choose an option: ")
+
+#         if choice == "1":
+#             view_tasks(tasks)
+#         elif choice == "2":
+#             add_task(tasks)
+#         elif choice == "3":
+#             mark_task_done(tasks)
+#         elif choice == "4":
+#             print("Exiting the To-Do List Manager. Goodbye!")
+#             break
+#         else:
+#             print("Invalid choice. Please try again.")
+
+# if __name__ == "__main__":
+#     main()
 
